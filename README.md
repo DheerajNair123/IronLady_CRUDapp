@@ -16,9 +16,14 @@ A minimal, browser-based to-do list application. Add, edit, delete, and auto-gen
 4. Click on any task to edit it directly.
 5. Click the ❌ button to delete a task.
 
+## Cloning
+```
+git clone https://github.com/DheerajNair123/IronLady_CRUDapp.git
+
+```
+
 ## File Structure
 ```
-SimpleApp/
   index.html   # Main to-do app (self-contained)
 ```
 
