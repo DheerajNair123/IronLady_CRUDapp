@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple To-Do Manager</title>
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      
+    }
+    h1 { color: #2c3e50; }
+    input, button {
+      padding: 8px;
+      margin: 5px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 5px 0;
+      padding: 8px;
+      background: #f4f4f4;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .actions button {
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📝 To-Do Manager</h1>
+  <input type="text" id="taskInput" placeholder="Enter a task">
+  <button onclick="addTask()">Add Task</button>
+  <button onclick="autoGenerateTasks()">Suggest Task</button>
+  <ul id="taskList"></ul>
+
+  <script>
+    let tasks = [];
+
+    function renderTasks() {
+      const taskList = document.getElementById("taskList");
+      taskList.innerHTML = "";
+      tasks.forEach((task, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <span contenteditable="true" onblur="updateTask(${index}, this.innerText)">
+            ${task}
+          </span>
+          <div class="actions">
+            <button onclick="deleteTask(${index})">❌</button>
+          </div>
+        `;
+        taskList.appendChild(li);
+      });
+    }
+
+    function addTask() {
+      const input = document.getElementById("taskInput");
+      const task = input.value.trim();
+      if (task) {
+        tasks.push(task);
+        input.value = "";
+        renderTasks();
+      }
+    }
+
+    function updateTask(index, newValue) {
+      tasks[index] = newValue.trim();
+      renderTasks();
+    }
+
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      renderTasks();
+    }
+    function autoGenerateTasks() {
+  const suggestions = [
+    "Review project notes",
+    "Go for a walk",
+    "Prepare lunch",
+    "Read a book chapter",
+    "Write in journal",
+    "Organize workspace",
+    "Plan weekend activities",
+    "Call a friend or family member",
+    "Meditate for 10 minutes",
+    "Learn a new skill online",
+    "Clean out email inbox",
+    "Set goals for the week",
+    "Practice a hobby",
+    "Watch a documentary",
+  ];
+  const randomTask = suggestions[Math.floor(Math.random() * suggestions.length)];
+  tasks.push(randomTask);
+  renderTasks();
+}
+
+  </script>
+</body>
+</html>
