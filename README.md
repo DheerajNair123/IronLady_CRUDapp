@@ -2,6 +2,9 @@
 
 A minimal, browser-based to-do list application. Add, edit, delete, and auto-generate tasks with a clean and responsive interface. No backend or dependencies required—just open the HTML file in your browser.
 
+## Implementation
+[Link](https://youtu.be/5ygm4f7a4wg)
+
 ## Features
 - Add new tasks
 - Edit tasks inline (click on a task to edit)
